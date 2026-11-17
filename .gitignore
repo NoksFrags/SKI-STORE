@@ -1,0 +1,13 @@
+# Local configuration and generated files
+.env
+.env.local
+
+# Uploaded product photos are environment specific
+public/uploads/products/*
+!public/uploads/products/.gitkeep
+
+# Logs
+storage/logs/*.log
+
+.DS_Store
+Thumbs.db

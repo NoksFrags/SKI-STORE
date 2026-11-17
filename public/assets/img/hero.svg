@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Snow covered mountain range at dusk">
+    <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0b150f"/>
+            <stop offset="0.45" stop-color="#1c3627"/>
+            <stop offset="0.75" stop-color="#755c37"/>
+            <stop offset="1" stop-color="#b9b09e"/>
+        </linearGradient>
+        <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#ffe6c7" stop-opacity="0.85"/>
+            <stop offset="0.45" stop-color="#ffd0a3" stop-opacity="0.22"/>
+            <stop offset="1" stop-color="#ffd0a3" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ridge1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6b5535"/>
+            <stop offset="1" stop-color="#22412f"/>
+        </linearGradient>
+        <linearGradient id="ridge2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1f3c2c"/>
+            <stop offset="1" stop-color="#14261c"/>
+        </linearGradient>
+        <linearGradient id="snowcap" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fbfaf8"/>
+            <stop offset="1" stop-color="#d9d3c7"/>
+        </linearGradient>
+        <linearGradient id="fore" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f5f3f0"/>
+            <stop offset="1" stop-color="#d5cfc4"/>
+        </linearGradient>
+    </defs>
+
+    <rect width="1600" height="900" fill="url(#sky)"/>
+    <circle cx="1180" cy="330" r="360" fill="url(#sun)"/>
+    <circle cx="1180" cy="330" r="74" fill="#ffe9cf" opacity="0.55"/>
+
+    <g fill="#f1eee9" opacity="0.7">
+        <circle cx="140" cy="90" r="2"/><circle cx="300" cy="150" r="1.6"/><circle cx="520" cy="70" r="2.2"/>
+        <circle cx="680" cy="180" r="1.4"/><circle cx="860" cy="60" r="1.8"/><circle cx="1010" cy="140" r="1.2"/>
+        <circle cx="1320" cy="80" r="2"/><circle cx="1460" cy="190" r="1.6"/><circle cx="1560" cy="70" r="1.4"/>
+        <circle cx="410" cy="250" r="1.2"/><circle cx="760" cy="300" r="1.2"/><circle cx="1080" cy="230" r="1.4"/>
+    </g>
+
+    <path d="M0 640 250 380 420 560 560 430 760 640 900 500 1120 690 1300 520 1600 700V900H0Z" fill="url(#ridge1)" opacity="0.75"/>
+    <path d="M250 380 330 470 250 500 200 440Z" fill="#edeae4" opacity="0.55"/>
+    <path d="M560 430 620 500 560 520 520 470Z" fill="#edeae4" opacity="0.45"/>
+
+    <path d="M0 760 220 570 400 720 560 600 780 790 980 640 1220 800 1420 660 1600 780V900H0Z" fill="url(#ridge2)"/>
+
+    <path d="M0 860 260 740 520 840 760 760 1040 870 1300 780 1600 860V900H0Z" fill="url(#fore)" opacity="0.92"/>
+
+    <g stroke="#b4a287" stroke-width="2" opacity="0.35">
+        <path d="M120 838 380 760 520 800"/>
+        <path d="M980 862 1180 806 1420 846"/>
+    </g>
+
+    <g stroke="#eae6de" stroke-width="3" opacity="0.35">
+        <path d="M860 0 1010 330"/><path d="M760 0 940 380"/>
+    </g>
+</svg>
