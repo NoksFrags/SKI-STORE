@@ -71,9 +71,6 @@ final class Cart
         return self::$row = ['id' => (int) $pdo->lastInsertId()];
     }
 
-    /**
-     * @return array<int, array<string, mixed>>
-     */
     public static function items(): array
     {
         if (self::$items !== null) {
@@ -132,9 +129,6 @@ final class Cart
         return (int) $statement->fetchColumn();
     }
 
-    /**
-     * Add a product to the current cart. Returns an error message or null on success.
-     */
     public static function add(int $productId, int $quantity = 1): ?string
     {
         $quantity = max(1, min(20, $quantity));
@@ -231,9 +225,6 @@ final class Cart
         self::$items = null;
     }
 
-    /**
-     * Merge the guest cart into the account cart after signing in.
-     */
     public static function mergeGuestCart(int $userId): void
     {
         $token = $_SESSION['cart_token'] ?? null;
@@ -297,9 +288,6 @@ final class Cart
         self::reset();
     }
 
-    /**
-     * @return array{subtotal: float, shipping: float, total: float, count: int, free_shipping_gap: float, free_shipping_from: float}
-     */
     public static function totals(): array
     {
         $items = self::items();

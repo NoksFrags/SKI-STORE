@@ -8,9 +8,7 @@ use App\Core\Database;
 
 final class Wishlist
 {
-    /**
-     * Toggle a product in the wishlist. Returns true when it was added.
-     */
+
     public static function toggle(int $userId, int $productId): bool
     {
         if (self::has($userId, $productId)) {
@@ -33,9 +31,6 @@ final class Wishlist
         return (int) $statement->fetchColumn() > 0;
     }
 
-    /**
-     * @return array<int, int>
-     */
     public static function ids(int $userId): array
     {
         $statement = Database::pdo()->prepare('SELECT product_id FROM wishlist_items WHERE user_id = ?');

@@ -107,9 +107,6 @@ final class CategoryController
         ];
     }
 
-    /**
-     * @return array<string, string>
-     */
     private function validate(array $data, ?int $ignoreId): array
     {
         $validator = (new Validator($_POST))

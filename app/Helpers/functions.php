@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 use App\Core\Flash;
 
-/**
- * Read a value from the .env file.
- */
 function env(string $key, ?string $default = null): ?string
 {
     $value = $GLOBALS['__env'][$key] ?? null;
@@ -14,9 +11,6 @@ function env(string $key, ?string $default = null): ?string
     return ($value === null || $value === '') ? $default : (string) $value;
 }
 
-/**
- * Read configuration with dot notation, e.g. config('app.name').
- */
 function config(string $key = '', mixed $default = null): mixed
 {
     static $config = null;
@@ -45,17 +39,11 @@ function config(string $key = '', mixed $default = null): mixed
     return $value;
 }
 
-/**
- * Escape output for safe HTML rendering.
- */
 function e(mixed $value): string
 {
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-/**
- * Base URL path of the project, detected from the executing script.
- */
 function base_url(): string
 {
     static $base = null;
@@ -83,9 +71,6 @@ function base_url(): string
     return $base = '';
 }
 
-/**
- * Directory the front controller lives in, used for static assets.
- */
 function asset_base(): string
 {
     $script = str_replace('\\', '/', (string) ($_SERVER['SCRIPT_NAME'] ?? '/index.php'));
@@ -132,9 +117,6 @@ function back(): never
     redirect('/');
 }
 
-/**
- * Render an error page and stop the request.
- */
 function abort(int $code, ?string $message = null): never
 {
     http_response_code($code);
@@ -171,9 +153,6 @@ function abort(int $code, ?string $message = null): never
     exit;
 }
 
-/**
- * Current request path with the project base removed.
- */
 function request_path(): string
 {
     $path = (string) (parse_url((string) ($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH) ?? '/');
@@ -215,7 +194,6 @@ function flash(string $message, string $type = 'success'): void
     Flash::add($type, $message);
 }
 
-/** @return array<string, string> */
 function errors(): array
 {
     $errors = $_SESSION['_errors'] ?? [];
@@ -296,9 +274,6 @@ function excerpt(?string $text, int $limit = 120): string
     return rtrim(mb_substr($text, 0, $limit)) . '…';
 }
 
-/**
- * Resolve a stored product image to a public URL.
- */
 function product_image(?string $image, bool $withFallback = true): string
 {
     $image = trim((string) $image);
@@ -314,10 +289,6 @@ function product_image(?string $image, bool $withFallback = true): string
     return $withFallback ? public_asset('assets/img/products/placeholder.svg') : '';
 }
 
-/**
- * Snap any requested icon size to the shared 4px scale (12, 16, 20, 24, 28)
- * so stroke weight and optical spacing stay consistent across the UI.
- */
 function icon_size(int|string|null $size, int $fallback = 20): int
 {
     $requested = is_numeric($size) ? (int) $size : $fallback;
@@ -344,17 +315,11 @@ function user_initials(string $name): string
     return $initials !== '' ? $initials : 'U';
 }
 
-/**
- * Client IP is used for lightweight logging of login attempts.
- */
 function client_ip(): string
 {
     return (string) ($_SERVER['REMOTE_ADDR'] ?? '0.0.0.0');
 }
 
-/**
- * Cached navigation categories shared by the storefront layout.
- */
 function nav_categories(): array
 {
     static $categories = null;
@@ -369,9 +334,6 @@ function cart_quantity(): int
     return $count ??= \App\Models\Cart::quantityCount();
 }
 
-/**
- * @return array<int, int>
- */
 function wishlist_ids(): array
 {
     static $ids = null;
@@ -395,9 +357,6 @@ function wishlist_count(): int
     return count(wishlist_ids());
 }
 
-/**
- * Build a URL for the current page with query string overrides.
- */
 function query_url(array $overrides = []): string
 {
     $params = array_merge($_GET, $overrides);

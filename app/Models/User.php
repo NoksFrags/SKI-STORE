@@ -93,9 +93,6 @@ final class User
         Database::pdo()->prepare('UPDATE users SET last_login_at = NOW() WHERE id = ?')->execute([$id]);
     }
 
-    /**
-     * @return array{items: array, total: int, page: int, pages: int}
-     */
     public static function paginate(string $search = '', int $page = 1, int $perPage = 12): array
     {
         $pdo = Database::pdo();

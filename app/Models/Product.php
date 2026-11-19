@@ -13,12 +13,6 @@ final class Product
         FROM products p
         LEFT JOIN categories c ON c.id = p.category_id';
 
-    /**
-     * Filterable, paginated product listing used by the shop and admin screens.
-     *
-     * @param array{search?: string, category?: string, sort?: string, featured?: bool, status?: string, include_inactive?: bool} $filters
-     * @return array{items: array, total: int, page: int, pages: int}
-     */
     public static function paginate(array $filters = [], int $page = 1, int $perPage = 9): array
     {
         $pdo = Database::pdo();
@@ -247,9 +241,6 @@ final class Product
         return $statement->fetchAll();
     }
 
-    /**
-     * @return array{total: int, active: int, out_of_stock: int, low_stock: int, inventory_value: float}
-     */
     public static function stats(): array
     {
         $row = Database::pdo()->query(

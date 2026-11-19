@@ -1,10 +1,8 @@
-/* Ski Store - front-end interactions (vanilla JS, no dependencies) */
 (function () {
     'use strict';
 
     var body = document.body;
 
-    /* ---------- Mobile navigation ---------- */
     var navToggle = document.querySelector('[data-nav-toggle]');
 
     if (navToggle) {
@@ -28,7 +26,6 @@
         });
     }
 
-    /* Tapping the dimmed page (the overlay) closes the drawers. */
     document.addEventListener('click', function (event) {
         if (body.classList.contains('nav-open') && event.target === document.body) {
             body.classList.remove('nav-open');
@@ -47,7 +44,6 @@
         });
     });
 
-    /* ---------- Dropdown menus (account + categories) ---------- */
     document.querySelectorAll('[data-dropdown]').forEach(function (wrapper) {
         var trigger = wrapper.querySelector('[data-dropdown-toggle]');
 
@@ -99,7 +95,6 @@
         });
     });
 
-    /* ---------- Quantity steppers ---------- */
     document.querySelectorAll('[data-qty]').forEach(function (stepper) {
         var input = stepper.querySelector('input');
 
@@ -120,7 +115,6 @@
         });
     });
 
-    /* ---------- Auto-submit cart quantities ---------- */
     document.querySelectorAll('[data-auto-submit]').forEach(function (form) {
         var timer = null;
 
@@ -132,7 +126,6 @@
         });
     });
 
-    /* ---------- Destructive action confirmation ---------- */
     document.querySelectorAll('[data-confirm]').forEach(function (form) {
         form.addEventListener('submit', function (event) {
             var message = form.getAttribute('data-confirm') || 'Are you sure?';
@@ -143,7 +136,6 @@
         });
     });
 
-    /* ---------- Flash messages ---------- */
     document.querySelectorAll('[data-dismiss]').forEach(function (button) {
         button.addEventListener('click', function () {
             var alert = button.closest('.alert');
@@ -157,7 +149,6 @@
         });
     });
 
-    /* ---------- Condensed header on scroll ---------- */
     var header = document.querySelector('[data-header]');
 
     if (header) {
@@ -169,7 +160,6 @@
         updateHeader();
     }
 
-    /* ---------- Password visibility ---------- */
     document.querySelectorAll('[data-password-toggle]').forEach(function (button) {
         button.addEventListener('click', function () {
             var input = document.getElementById(button.getAttribute('data-password-toggle'));
@@ -184,7 +174,6 @@
         });
     });
 
-    /* ---------- Admin sidebar on small screens ---------- */
     var adminToggle = document.querySelector('[data-admin-toggle]');
 
     if (adminToggle) {
@@ -193,8 +182,6 @@
         });
     }
 
-    /* ---------- Sort menu ----------
-       Same open/close behaviour as the account and category dropdowns. */
     document.querySelectorAll('[data-sort-menu]').forEach(function (menu) {
         var toggle = menu.querySelector('[data-sort-toggle]');
 
@@ -226,10 +213,6 @@
         });
     });
 
-    /* ---------- Scroll reveal ----------
-       Cards and section headings fade up once, staggered by their position
-       inside a row. Anything already in view on load still animates, so the
-       first screen never looks static; reduced-motion users get no motion. */
     var revealTargets = document.querySelectorAll(
         '.product-card, .category-card, .feature, .stat-card, .order-card, .promo, .section__head'
     );
@@ -260,10 +243,6 @@
         });
     }
 
-    /* ---------- Loading states ----------
-       Feedback for the gap between clicking submit and the next page arriving.
-       The button keeps its footprint and spins, so the layout never jumps.
-       Forms that ask for confirmation first are left alone. */
     document.addEventListener('submit', function (event) {
         var form = event.target;
 
@@ -288,9 +267,6 @@
         }, 0);
     }, false);
 
-    /* ---------- Counter feedback ----------
-       A cart or wishlist number that changes gets one small pop, so the result
-       of an add or remove is visible without hunting for the flash message. */
     var counters = document.querySelectorAll('.icon-btn__badge');
 
     if (counters.length) {
@@ -323,7 +299,6 @@
         try {
             window.sessionStorage.setItem(counterKey, JSON.stringify(currentCounts));
         } catch (error) {
-            /* Private mode: the pop is a nicety, not a requirement. */
         }
     }
 })();

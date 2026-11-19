@@ -13,11 +13,7 @@ use Throwable;
 
 final class CheckoutService
 {
-    /**
-     * Validate stock, write the order and take the items out of inventory.
-     *
-     * @return array{order_id: int, order_number: string}
-     */
+
     public static function place(array $user, array $data): array
     {
         $items = Cart::items();

@@ -19,21 +19,16 @@ use App\Middleware\AdminMiddleware;
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
-/** @var Router $router */
-
-// Storefront
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/shop', [ShopController::class, 'index']);
 $router->get('/product/{slug}', [ShopController::class, 'show']);
 
-// Cart works for guests as well; the cart is merged on sign in.
 $router->get('/cart', [CartController::class, 'index']);
 $router->post('/cart/add', [CartController::class, 'add']);
 $router->post('/cart/update', [CartController::class, 'update']);
 $router->post('/cart/remove', [CartController::class, 'remove']);
 $router->post('/cart/clear', [CartController::class, 'clear']);
 
-// Authentication
 $router->group([GuestMiddleware::class], static function (Router $router): void {
     $router->get('/login', [AuthController::class, 'showLogin']);
     $router->post('/login', [AuthController::class, 'login']);
@@ -43,7 +38,6 @@ $router->group([GuestMiddleware::class], static function (Router $router): void 
 
 $router->post('/logout', [AuthController::class, 'logout'], [AuthMiddleware::class]);
 
-// Signed-in customers
 $router->group([AuthMiddleware::class], static function (Router $router): void {
     $router->get('/checkout', [CheckoutController::class, 'index']);
     $router->post('/checkout', [CheckoutController::class, 'place']);
@@ -63,7 +57,6 @@ $router->group([AuthMiddleware::class], static function (Router $router): void {
     $router->post('/account/password', [AccountController::class, 'updatePassword']);
 });
 
-// Administration
 $router->group([AdminMiddleware::class], static function (Router $router): void {
     $router->get('/admin', [AdminDashboardController::class, 'index']);
 

@@ -6,10 +6,9 @@ namespace App\Core;
 
 final class Router
 {
-    /** @var array<int, array{method: string, pattern: string, handler: array, middleware: array}> */
+
     private array $routes = [];
 
-    /** @var array<int, class-string> */
     private array $groupMiddleware = [];
 
     public function get(string $path, array $handler, array $middleware = []): void
@@ -22,9 +21,6 @@ final class Router
         $this->add('POST', $path, $handler, $middleware);
     }
 
-    /**
-     * Register routes that share middleware, e.g. auth or admin protection.
-     */
     public function group(array $middleware, callable $callback): void
     {
         $previous = $this->groupMiddleware;
@@ -78,7 +74,7 @@ final class Router
             }
 
             foreach ($route['middleware'] as $middleware) {
-                /** @var object $instance */
+
                 $instance = new $middleware();
                 $result = $instance->handle();
 

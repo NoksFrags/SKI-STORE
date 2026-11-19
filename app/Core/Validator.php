@@ -6,7 +6,7 @@ namespace App\Core;
 
 final class Validator
 {
-    /** @var array<string, string> */
+
     private array $errors = [];
 
     public function __construct(private array $data)
@@ -114,7 +114,6 @@ final class Validator
         return $this->errors === [];
     }
 
-    /** @return array<string, string> */
     public function errors(): array
     {
         return $this->errors;

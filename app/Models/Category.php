@@ -9,9 +9,7 @@ use PDO;
 
 final class Category
 {
-    /**
-     * All categories with the number of active products in each.
-     */
+
     public static function all(): array
     {
         return Database::pdo()->query(

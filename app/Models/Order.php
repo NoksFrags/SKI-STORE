@@ -128,9 +128,6 @@ final class Order
         return 'SK-' . time();
     }
 
-    /**
-     * @return array{items: array, total: int, page: int, pages: int}
-     */
     public static function paginateForUser(int $userId, int $page = 1, int $perPage = 6): array
     {
         $pdo = Database::pdo();
@@ -151,9 +148,6 @@ final class Order
         return ['items' => $statement->fetchAll(), 'total' => $total, 'page' => $page, 'pages' => $pages];
     }
 
-    /**
-     * @return array{items: array, total: int, page: int, pages: int}
-     */
     public static function paginateAdmin(string $search = '', string $status = '', int $page = 1, int $perPage = 12): array
     {
         $pdo = Database::pdo();
@@ -202,9 +196,6 @@ final class Order
         return $statement->fetchAll();
     }
 
-    /**
-     * @return array<string, float|int>
-     */
     public static function stats(): array
     {
         $row = Database::pdo()->query(
@@ -233,11 +224,6 @@ final class Order
         ];
     }
 
-    /**
-     * Revenue for the last N months, gaps filled with zeros for the chart.
-     *
-     * @return array<int, array{month: string, label: string, revenue: float, orders: int}>
-     */
     public static function monthlyRevenue(int $months = 6): array
     {
         $start = (new DateTimeImmutable('first day of this month'))->modify('-' . ($months - 1) . ' months');
@@ -298,9 +284,6 @@ final class Order
         return (float) $statement->fetchColumn();
     }
 
-    /**
-     * Change an order status, restoring or re-taking stock around cancellation.
-     */
     public static function updateStatus(int $orderId, string $status): void
     {
         if (! array_key_exists($status, self::STATUSES)) {

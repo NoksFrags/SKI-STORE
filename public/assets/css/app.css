@@ -2,11 +2,8 @@
 @import url('admin.css');
 @import url('pages.css');
 
-/* ============================================================
-   Ski Store — design tokens & core UI
-   ============================================================ */
 :root {
-    /* Palette: deep pine, warm bone paper, muted brass. */
+
     --navy: #16251d;
     --navy-800: #1b2d23;
     --navy-700: #2a4034;
@@ -46,7 +43,6 @@
     --ease: cubic-bezier(.22, .61, .36, 1);
     --ease-soft: cubic-bezier(.4, 0, .2, 1);
 
-    /* Accent on dark surfaces, focus treatment, mono for identifiers only */
     --accent-light: #d9bd8d;
     --focus: #8a6320;
     --focus-ring: 0 0 0 4px rgba(166, 124, 61, .18);
@@ -55,7 +51,6 @@
     --on-dark-muted: #b8c3b6;
     --mono: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', Menlo, Consolas, monospace;
 
-    /* Spacing scale — proximity carries grouping, rules and borders only support it */
     --space-1: 6px;
     --space-2: 10px;
     --space-3: 16px;
@@ -103,7 +98,7 @@ h1, h2, h3, h4, h5 {
 h1 { font-size: clamp(2.1rem, 3.8vw, 3.25rem); }
 h2 { font-size: clamp(1.55rem, 2.4vw, 2.1rem); }
 h3 { font-size: 1.16rem; letter-spacing: -.005em; }
-/* Emphasis in a headline is stated with colour, not a slanted face. */
+
 h1 em, h2 em, h3 em { font-style: normal; color: var(--accent-dark); }
 
 p { margin: 0 0 1rem; text-wrap: pretty; }
@@ -131,7 +126,6 @@ p:last-child { margin-bottom: 0; }
 
 .icon { flex: 0 0 auto; display: inline-block; vertical-align: -0.18em; }
 
-/* ---------- Utilities ---------- */
 .muted { color: var(--muted); }
 .small { font-size: .875rem; }
 .text-center { text-align: center; }
@@ -156,7 +150,6 @@ p:last-child { margin-bottom: 0; }
 }
 .eyebrow--light { color: var(--accent-light); }
 
-/* ---------- Buttons ---------- */
 .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 9px;
     padding: 12px 22px;
@@ -209,7 +202,6 @@ p:last-child { margin-bottom: 0; }
 
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
 
-/* ---------- Badges ---------- */
 .badge {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 4px 10px;
@@ -229,7 +221,6 @@ p:last-child { margin-bottom: 0; }
 .badge--sale { background: var(--accent-soft); color: #85571c; }
 .badge--new { background: var(--sky-soft); color: #2c5a4a; }
 
-/* ---------- Alerts ---------- */
 .flash-stack { width: 100%; max-width: var(--container); margin: 18px auto 0; padding: 0 clamp(16px, 4vw, 34px); }
 .flash-stack--plain { max-width: 460px; }
 .alert {
@@ -266,7 +257,6 @@ p:last-child { margin-bottom: 0; }
     to { opacity: 1; transform: none; }
 }
 
-/* ---------- Forms ---------- */
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .form-grid--tight { gap: 14px; }
 .field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
@@ -329,7 +319,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 }
 .pw-toggle:hover { background: var(--soft); color: var(--ink); }
 
-/* ---------- Header ---------- */
 .topbar { background: var(--navy); color: #b9cee0; font-size: .78rem; }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 36px; }
 .topbar__note { display: inline-flex; align-items: center; gap: 8px; }
@@ -445,7 +434,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
     position: absolute; right: 0; top: calc(100% + 10px);
     min-width: 226px;
     background: #fff; border: 1px solid var(--line);
-    /* Outer radius minus panel padding = the radius of the rows inside. */
+
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     padding: 8px;
@@ -485,7 +474,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 
 .nav-toggle { display: none; }
 
-/* ---------- Footer ---------- */
 .site-footer { background: var(--navy); color: #a8b6a9; margin-top: 96px; }
 .site-footer a { color: #d3ddce; }
 .site-footer a:hover { color: #fffdf9; }
@@ -517,7 +505,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
     letter-spacing: .04em; text-transform: uppercase; color: #b9cee0;
 }
 
-/* ---------- Section headings ---------- */
 .section { padding: 64px 0 0; }
 .section--tight { padding-top: 44px; }
 .section__head {
@@ -534,7 +521,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 }
 .section__link:hover { color: var(--accent-dark); border-color: var(--accent); }
 
-/* ---------- Hero ---------- */
 .hero {
     position: relative; overflow: hidden;
     background: var(--navy); color: #fff;
@@ -568,7 +554,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .hero__text { font-size: clamp(1rem, 1.3vw, 1.08rem); color: #c3cfc0; max-width: 44ch; margin-bottom: 30px; }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-bottom: 40px; }
 
-/* One loud action per screen; the second path is a quiet text link. */
 .hero__secondary {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: .92rem; font-weight: 600; color: #e8e0cd;
@@ -587,7 +572,7 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
     font-variant-numeric: tabular-nums;
 }
 .hero__stat span { font-size: .78rem; color: #a3b1a1; }
-/* The hero shows the actual product, at a size worth looking at. */
+
 .hero__feature {
     justify-self: end;
     align-self: end;
@@ -614,7 +599,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .hero__feature-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 14px; }
 .hero__price { color: #fffdf9; font-size: 1.18rem; }
 
-/* ---------- Category cards ---------- */
 .category-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(172px, 1fr));
@@ -640,7 +624,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .category-card__name { position: relative; z-index: 1; font-family: var(--display); font-weight: 800; font-size: .98rem; color: var(--ink); }
 .category-card__count { position: relative; z-index: 1; font-size: .78rem; color: var(--muted); }
 
-/* ---------- Product cards ---------- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
@@ -732,7 +715,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .product-card__add:hover { background: var(--accent); transform: translateY(-2px); }
 .product-card__add:disabled { background: var(--line-strong); cursor: not-allowed; }
 
-/* ---------- Empty state ---------- */
 .empty {
     background: #fff;
     border: 1px dashed var(--line-strong);
@@ -749,7 +731,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .empty__title { font-family: var(--display); font-weight: 800; font-size: 1.1rem; }
 .empty__text { color: var(--muted); font-size: .9rem; max-width: 400px; margin-bottom: 8px; }
 
-/* ---------- Pagination ---------- */
 .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 36px; flex-wrap: wrap; }
 .pagination__link {
     min-width: 38px; height: 38px; padding: 0 11px;
@@ -764,11 +745,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .pagination__link.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
 .pagination__link.is-disabled { opacity: .45; pointer-events: none; }
 
-/* ============================================================
-   Premium motion layer
-   - Slow, expensive-feeling easing; nothing bouncy.
-   - Everything degrades to static under reduced-motion.
-   ============================================================ */
 @keyframes rise-in {
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: none; }
@@ -782,10 +758,8 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
     to   { transform: translateX(240%) skewX(-18deg); }
 }
 
-/* Page enters softly on navigation */
 .main-content { animation: fade-in .6s var(--ease) both; }
 
-/* Scroll reveal: JS adds .reveal then .is-in */
 .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -795,9 +769,6 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 }
 .reveal.is-in { opacity: 1; transform: none; }
 
-/* Once revealed, hand hover motion back to the component's own timing.
-   These overrides sit after the base rules, so they need the extra
-   specificity of .reveal.is-in to win. */
 .product-card.reveal.is-in {
     transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
 }
@@ -807,30 +778,23 @@ input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; marg
 .product-card.reveal.is-in:hover { transform: translateY(-6px); }
 .category-card.reveal.is-in:hover { transform: translateY(-4px); }
 
-/* Hero copy rises once on load */
 .hero__inner > * { animation: rise-in 1s var(--ease) both; }
 .hero__inner > *:nth-child(2) { animation-delay: .16s; }
 .hero__title { letter-spacing: -.03em; }
 
-/* Optical trim: display faces sit low in their line box. */
 .section__head h2, .page-head h1, .hero__title { margin-top: -.02em; }
 
-/* Media zoom on the product detail gallery */
 .product-gallery__main { overflow: hidden; }
 .product-gallery__main img { transition: transform 1.4s var(--ease); }
 .product-gallery__main:hover img { transform: scale(1.035); }
 
-/* Underline sweep for quiet text links */
 .section__link .icon { transition: transform .35s var(--ease); }
 .section__link:hover .icon { transform: translateX(4px); }
 
-/* Badges read as stamped labels rather than pills */
 .badge { letter-spacing: .1em; font-weight: 600; }
 
-/* Images settle instead of popping in */
 img { background-color: var(--soft); }
 
-/* Warm, thin scrollbar */
 * { scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
 ::-webkit-scrollbar { width: 11px; height: 11px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -840,7 +804,6 @@ img { background-color: var(--soft); }
 }
 ::-webkit-scrollbar-thumb:hover { background: #c3b9a5; }
 
-/* A whisper of paper grain over flat areas */
 body::after {
     content: "";
     position: fixed; inset: 0; z-index: 9998;
@@ -849,16 +812,13 @@ body::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ---------- Numerals, identifiers and feedback ---------- */
 .price-now, .price-was, .price-off,
 .qty__input, .summary-row, .cart-row__price,
 .hero__stat strong, .stat-card__value, .product-card__stock,
 .meta-list dd, .icon-btn__badge, .pagination__link, .table td { font-variant-numeric: tabular-nums; }
 
-/* Monospace is reserved for identifiers — SKUs, order codes, quantities. */
 .mono { font-family: var(--mono); font-size: .92em; letter-spacing: .01em; }
 
-/* Loading state: the control stays exactly where it is, and spins. */
 .btn.is-loading { pointer-events: none; cursor: progress; }
 .btn.is-loading .icon { opacity: .5; }
 .btn.is-loading::after {
@@ -875,8 +835,6 @@ body::after {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Cart and wishlist counters acknowledge a change instead of silently
-   re-rendering with a new number. */
 @keyframes count-pop {
     0% { transform: scale(.7); }
     55% { transform: scale(1.18); }

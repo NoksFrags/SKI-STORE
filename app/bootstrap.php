@@ -9,9 +9,6 @@ define('STORAGE_PATH', BASE_PATH . '/storage');
 define('PUBLIC_PATH', BASE_PATH . '/public');
 define('VIEW_PATH', APP_PATH . '/Views');
 
-/**
- * Minimal .env loader: KEY=value per line, optional surrounding quotes.
- */
 $envFile = BASE_PATH . '/.env';
 $envValues = [];
 

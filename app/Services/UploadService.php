@@ -8,10 +8,7 @@ use RuntimeException;
 
 final class UploadService
 {
-    /**
-     * Store an uploaded product image and return its public relative path.
-     * Returns the existing path when no new file was submitted.
-     */
+
     public static function storeProductImage(?array $file, ?string $existing = null): ?string
     {
         if ($file === null || ! isset($file['error']) || $file['error'] === UPLOAD_ERR_NO_FILE) {

@@ -1,14 +1,3 @@
--- ============================================================
---  Ski Store - complete database script
---  MariaDB 10.4+ / MySQL 5.7+ (XAMPP default)
---
---  Import with phpMyAdmin (Import tab) or in a terminal:
---    C:\xampp\mysql\bin\mysql.exe -u root < database\schema.sql
---
---  WARNING: this script drops and recreates the tables of the
---  "skistore" database. Existing shop data is replaced.
--- ============================================================
-
 CREATE DATABASE IF NOT EXISTS `skistore`
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
@@ -29,9 +18,6 @@ DROP TABLE IF EXISTS `users`;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
--- ------------------------------------------------------------
--- Users: customers and store administrators (role column)
--- ------------------------------------------------------------
 CREATE TABLE `users` (
     `id`            INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `full_name`     VARCHAR(120) NOT NULL,
@@ -53,9 +39,6 @@ CREATE TABLE `users` (
     KEY `idx_users_created` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Categories
--- ------------------------------------------------------------
 CREATE TABLE `categories` (
     `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name`        VARCHAR(100) NOT NULL,
@@ -68,9 +51,6 @@ CREATE TABLE `categories` (
     UNIQUE KEY `uq_categories_slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Products
--- ------------------------------------------------------------
 CREATE TABLE `products` (
     `id`                INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `category_id`       INT UNSIGNED DEFAULT NULL,
@@ -97,9 +77,6 @@ CREATE TABLE `products` (
     CONSTRAINT `fk_products_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Carts: one per signed-in user, one per guest session
--- ------------------------------------------------------------
 CREATE TABLE `carts` (
     `id`            INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `user_id`       INT UNSIGNED DEFAULT NULL,
@@ -125,9 +102,6 @@ CREATE TABLE `cart_items` (
     CONSTRAINT `fk_cart_items_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Wishlists
--- ------------------------------------------------------------
 CREATE TABLE `wishlist_items` (
     `id`         INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `user_id`    INT UNSIGNED NOT NULL,
@@ -140,9 +114,6 @@ CREATE TABLE `wishlist_items` (
     CONSTRAINT `fk_wishlist_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Orders
--- ------------------------------------------------------------
 CREATE TABLE `orders` (
     `id`                   INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `order_number`         VARCHAR(30) NOT NULL,
@@ -184,13 +155,6 @@ CREATE TABLE `order_items` (
     CONSTRAINT `fk_order_items_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================================
---  Demo data
--- ============================================================
-
--- Passwords:
---   admin@skistore.test    ->  Admin123!
---   customer@skistore.test ->  Customer123!
 INSERT INTO `users`
     (`id`, `full_name`, `email`, `password_hash`, `phone`, `address`, `city`, `postal_code`, `country`, `role`, `created_at`)
 VALUES

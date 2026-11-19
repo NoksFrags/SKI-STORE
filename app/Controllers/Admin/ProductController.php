@@ -152,9 +152,6 @@ final class ProductController
         ];
     }
 
-    /**
-     * @return array<string, string>
-     */
     private function validate(array $data, ?int $ignoreId, bool $isNew): array
     {
         $validator = (new Validator($_POST))

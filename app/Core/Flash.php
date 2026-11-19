@@ -11,7 +11,6 @@ final class Flash
         $_SESSION['_flash'][] = ['type' => $type, 'message' => $message];
     }
 
-    /** @return array<int, array{type: string, message: string}> */
     public static function pull(): array
     {
         $messages = $_SESSION['_flash'] ?? [];
